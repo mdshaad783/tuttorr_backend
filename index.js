@@ -11,9 +11,22 @@ const port = process.env.PORT || 5000
 connectDb()
 
 const app = express()
+
+const allowedOrigins = [
+  "http://localhost:5173",       // local dev
+  "https://tuttorr.vercel.app"   // deployed frontend
+];
+
 // backend/server.js
 app.use(cors({
-  origin: "https://tuttorr.vercel.app", 
+  origin: (origin, callback) => {
+    // allow requests with no origin (like Postman) or from allowedOrigins
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true
 }));
 
