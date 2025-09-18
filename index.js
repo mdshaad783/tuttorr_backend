@@ -13,7 +13,7 @@ connectDb()
 const app = express()
 // backend/server.js
 app.use(cors({
-  origin: "http://localhost:5173", // or your frontend URL
+  origin: true,
   credentials: true
 }));
 
