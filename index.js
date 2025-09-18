@@ -13,7 +13,7 @@ connectDb()
 const app = express()
 // backend/server.js
 app.use(cors({
-  origin: true,
+  origin: "https://tuttorr.vercel.app", 
   credentials: true
 }));
 
