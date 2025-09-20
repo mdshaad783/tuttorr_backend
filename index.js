@@ -2,6 +2,7 @@ import express from "express";
 import connectDb from "./config/db.js";
 import dotenv from "dotenv"
 import userRoutes from './routes/userRoutes.js'
+import assignmentsRoutes from './routes/assignmentsRoute.js'
 import cors from "cors";
 import cookieParser from "cookie-parser"; 
 
@@ -33,6 +34,7 @@ app.use(cors({
 app.use(cookieParser());
 app.use(express.json())
 app.use('/api/users', userRoutes)
+app.use('/api/assignments', assignmentsRoutes)
 
 app.listen(port,()=>{
     console.log(`App successfully running on port: ${port}`)
